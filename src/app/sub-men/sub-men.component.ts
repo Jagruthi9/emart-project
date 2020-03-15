@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../service/product-service.service';
+import { Product } from '../service/entity/product.entity';
 
 @Component({
   selector: 'app-sub-men',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubMenComponent implements OnInit {
 
-  constructor() { }
+  public products: Product[];
+  constructor(private productService: ProductService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.products = this.productService.findAll();
   }
 
 }

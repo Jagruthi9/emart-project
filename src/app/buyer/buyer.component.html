@@ -1,67 +1,31 @@
-<div class="fixed-top navbar navbar-dark bg-dark navbar-static-top navbar-expand-md ">
-  <div class="container">
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">☰</button>
-              <a class="navbar-brand" href="/">
-              <img src="assets\images\s.jpg" height="28">
-              </a>
-      <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-              <li class="nav-item"><a href="#" class="nav-link">Home</a>
-              </li>
-              
+<html>
+<body>
+    <div class=bg-img>
+    
+    <form class="justify-content-center" (ngSubmit)="signIn()">
+        <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Mail Id" id="userName" #userName [(ngModel)]="user.userName"  name="uname" required> 
         
-          <li class="dropdown menu-large nav-item"> <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Categories </a>
-              <ul class="dropdown-menu megamenu">
-                  <div class="row">
-                  <li class="col-md-3 dropdown-item">
-                      <ul>
-                          <li class="dropdown-header">Sub-Categories</li>
-                          <li><a href="clothing">Clothing</a>
-                          </li>
-                         
-                          <li><a href="electronics">Electronics</a>
-                          </li>
-                          
-                          <li><a href="furniture">Furniture</a>
-                          </li>
-                          
-                      </ul>
-                  </li>
-                  <!-- <li class="col-md-3 dropdown-item">
-                      <ul>
-                          <li class="dropdown-header">Electronics</li>
-                          <li><a href="#">Laptops</a>
-                          </li>
-                          <li><a href="#">Mobiles</a>
-                          </li>
-                          <li><a href="#">Head Phones</a>
-                          </li>
-                          <li><a href="#">Bluetooth devices</a>
-                          </li>
-                          
-                          
-                      </ul>
-                  </li>
-                  
-                  <li class="col-md-3 dropdown-item">
-                      <ul>
-                          <li class="dropdown-header">Furnitures</li>
-                          <li><a href="#">wood</a>
-                          </li>
-                          <li><a href="#">Glass</a>
-                          </li>
-                          
-                        </ul>
-                      </li>   -->
-                          
-                          
-                          
-                      
-                 
-                  </div>
-                  </ul>
-          </li>
-          </ul>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password"  placeholder="Enter Password" name="defaultLoginFormPassword" [(ngModel)]="user.password"  name="psw" required>
+    
+        <button type="submit" (click)="ngSubmit" >Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label> 
+        
+
       </div>
-  </div>
-</div>
+    
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="submit" class="cancelbtn" routerLink="">cancel</button>
+        <span class="rgn">Not a Member <a href="register">Register?</a></span>
+
+        <span class="psw">Forgot <a href="password">password?</a></span>
+       </div>
+     <!-- </div>  -->
+    </form>
+<!-- </body> -->
+<!-- </html> -->

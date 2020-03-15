@@ -1,44 +1,58 @@
+
+
+
 <html>
-    <body>
-
-    
-            <div class="container">
-              <h1>Register</h1>
-              
-              <hr>
-              <label for="FirstName"><b>FirstName</b></label>
-              <input type="text" placeholder="Enter FirstName" name="fname" required>
-
-              <label for="LastName"><b>LastName</b></label>
-              <input type="text" placeholder="Enter LastName" name="lname" required>
+  <div class="bg-img">
+  <form class="text-center border border-light p-5" (ngSubmit)="save()" action="#!">
+  
+      <p class="h4 mb-4">Register</p>
           
-              <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="Enter Email" name="email" required>
+          <input type="text" name="fnm1"[(ngModel)]="users.firstName" [(ngModel)]="user.firstName" placeholder="first Name" class="form-control"
+                   required="required" minlength="4"  #fnm="ngModel"/>
+                  <div  *ngIf="(fnm.touched||fnm.dirty)&&fnm.invalid">
+                      <small class="text-danger" *ngIf="fnm.errors.required">Can not be left blank</small>
+                      <small class="text-danger" *ngIf="fnm.errors.minlength">Can not be less than 4 characters</small>
+                  </div>
+         <br>
           
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter 8 charaters" name="psw" required>
+          <input type="text" name="lnm1"[(ngModel)]="users.lastName"  [(ngModel)]="user.lastName" placeholder="Last Name" class="form-control"
+          required="required" minlength="4" #lnm="ngModel"/>
+         <div  *ngIf="(lnm.touched||lnm.dirty)&&lnm.invalid">
+        <small   class="text-danger" *ngIf="lnm.errors.required">Can not be left blank</small>
+        <small  class="text-danger"  *ngIf="lnm.errors.minlength">Can not be less than 4 characters</small>
+         </div>
+          <br>
           
-              <label for="PhoneNo"><b>Phone Number</b></label>
-              <input type="integer" placeholder="Enter number" name="phno" required>
-
-              <div class="row">
-                <div class="col-25">
-                  <label for="Address">Address</label>
-                </div>
-                <div class="col-75">
-                  <textarea id="Address" name="Address"  style="height:200px"></textarea>
-                </div>
-              </div>
-              <hr>
-          
-              
-              <button type="submit" class="registerbtn">Register</button>
+       
+       <input type="text" name="email1"[(ngModel)]="users.email"   [(ngModel)]="user.email" class="form-control" placeholder="Email"
+                     required="required" min="" #email="ngModel"/>
+                  <div  *ngIf="(email.touched||email.dirty)&&email.invalid">
+                      <small  class="text-danger" *ngIf="email.errors.required">Can not be left blank</small>
+                      <small  class="text-danger" *ngIf="email.errors.min">It must contain @ symbol</small>
+                  </div>
+      <br>
+      
+     
+      <input type="password" name="pwd1"[(ngModel)]="users.password" placeholder="Password"  [(ngModel)]="user.password" class="form-control"
+                     required="required" min="" #pwd="ngModel"/>
+                  <div  *ngIf="(pwd.touched||pwd.dirty)&&email.invalid">
+                      <small  class="text-danger" *ngIf="pwd.errors.required">Can not be left blank</small>
+                      <small  class="text-danger" *ngIf="pwd.errors.min">It must contain one uppercase letter</small>
+                  </div>
+      
+      <br>
+      <input type="text" name="phno1"[(ngModel)]="users.mobileno" class="form-control"  [(ngModel)]="user.mobileno" placeholder="mobileno"
+                  required="required" min="10" #phno="ngModel"/>
+            <div   *ngIf="(phno.touched||phno.dirty)&&phno.invalid">
+                <small  class="text-danger" *ngIf="phno.errors.required">Can not be left blank</small>
+                <small class="text-danger" *ngIf="phno.errors.min">Can not be less than 10</small>
             </div>
-          
-            <div class="container signin">
-              <p>Already have an account? <a href="login">Sign in</a>.</p>
-            </div>
-          
-          
-    </body>
-</html>
+        <br>
+      <button class="btn btn-info my-4 btn-primary" type="submit" >Register</button>
+  
+  
+  </form>
+  </div>
+  
+  </html>
+  

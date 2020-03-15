@@ -1,0 +1,14 @@
+
+ 
+  .bg-img{
+     background-image:url("src/assets/images/r7.jpg"); 
+    align-self:right;
+    min-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  
+  

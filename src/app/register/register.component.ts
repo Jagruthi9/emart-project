@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Users } from '../model/users';
+import { UserserviceService } from '../service/userservice.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +10,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  users=new Users(1,"","","","","");
+  user:Users ;
+  msg:string;
+  isNew:boolean;
 
-  constructor() { }
+  constructor(private userService:UserserviceService,
+    private actRoute:ActivatedRoute,
+    private router:Router
+    ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {let id=this.actRoute.snapshot.params.id;
+    if(id){
+      this.isNew=false;
+      this.userService.getById(id).subscribe(
+        (data)=>{
+         this.user=data;
+       }
+     );
+   }else{
+     this.isNew=true;
+     this.user={
+       id:0,
+   firstName:"",
+   lastName:"",
+   email:"",
+   password:"",
+   mobileno:"",
+
+     };
+   }
+ }
+ save() {
+   let ob: Observable<Users>;
+
+   if (this.isNew) {
+     ob = this.userService.add(this.user);
+   }
+   ob.subscribe(
+     (data) => {
+       
+       this.router.navigateByUrl("register/buyer");
+     },
+     (errResponse) => {
+       this.msg = errResponse.error;
+
+     }
+   );
+ }
+
 
 }
